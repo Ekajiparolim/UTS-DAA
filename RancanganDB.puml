@@ -1,0 +1,56 @@
+@startuml
+
+entity "Penjual" as penjual {
+  * id_Penjual : integer <<PK>>
+  * nama : string
+  * alamat : string
+  * telepon : string
+  * created_at : timestamp
+  * updated_at : timestamp
+}
+
+entity "Produk" as produk {
+  * id_Produk : integer <<PK>>
+  * id_Penjual : integer <<FK>>
+  * nama : string
+  * deskripsi : text
+  * harga : decimal
+  * stok : integer
+  * created_at : timestamp
+  * updated_at : timestamp
+}
+
+entity "Pembeli" as pembeli {
+  * id_Pembeli : integer <<PK>>
+  * nama : string
+  * email : string <<UK>>
+  * alamat : string
+  * telepon : string
+  * created_at : timestamp
+  * updated_at : timestamp
+}
+
+entity "Order" as order {
+  * id_Order : integer <<PK>>
+  * id_Pembeli : integer <<FK>>
+  * order_date : date
+  * created_at : timestamp
+  * updated_at : timestamp
+}
+
+entity "Order Item" as order_item {
+  * id_OrderItem : integer <<PK>>
+  * id_Order : integer <<FK>>
+  * id_Produk : integer <<FK>>
+  * jumlah : integer
+  * harga : decimal
+  * created_at : timestamp
+  * updated_at : timestamp
+}
+
+penjual -- produk : "Memiliki"
+produk -- order_item : "Termasuk dalam"
+order -- order_item : "Memiliki"
+pembeli -- order : "Memesan"
+
+@enduml

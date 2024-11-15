@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Pembeli" as Buyer
+actor "Penjual" as Seller
+
+rectangle "Jual Beli" {
+    Buyer -- (Login)
+    Buyer -- (Memilih Produk)
+    Buyer -- (Lihat Produk)
+    Buyer -- (Pembayaran)
+    Buyer -- (Riwayat Pembelian)
+
+    Seller -- (Login)
+    Seller -- (Tambah Produk)
+    Seller -- (Lihat Pesanan)
+    Seller -- (Kelola Status Pesanan)
+    Seller -- (Riwayat Penjualan)
+}
+@enduml

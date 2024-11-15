@@ -1,0 +1,18 @@
+@startuml
+start
+:Pelanggan melihat produk;
+repeat
+    :Pelanggan memilih produk;
+    if (Membeli?) then (Tidak)
+        :Pelanggan tidak jadi membeli;
+        stop
+    else (Ya)
+        :Sudah selesai membeli?;
+        if () then (Ya)
+            :Lakukan pembayaran;
+            stop
+        else (Pilih lagi)
+        endif
+    endif
+repeat while
+@enduml
